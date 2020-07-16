@@ -15,6 +15,15 @@ The original project (including prior commit history) and the full final product
 * Sample SQL queries used to test the newly created SQL database
 * A pdf copy of the project's summary report, with additional recommendations to the company on purchase order processing
 
+## Instructions
+1. Extract and read source data from original CSVs (run Step 1 in jupyter notebook)
+2. Create tables in PostgreSQL (run SQL schema file)
+3. Transform, clean, & format data in Pandas. Export final dataframes into PostGres. (5 data frames total, run Step 3 in jupyter notebook)
+4. Create any new dataframes needed for the final database and load into Postgres (Run the join code listed in the jupyter notebook at Step 4 in Postgres, and explort the resulting table as a csv.  Load the csv back into Jupyter and run Step 4)
+    * in this case, we needed to create a new version of the order line table
+    * this required running a left join between the old order line table and the order header table
+5. Connect to the local database and load data back into jupyter via SQLAlchemy in order to run queries (run Steps 5 & 6 in jupyter notebook) 
+
 
 ## Extract
 The 5 original Excel files, which comprised the prior procurement tracking system and came directly from the company’s eProcurement tool, were converted to csv format:
@@ -31,7 +40,7 @@ Each of the files needed to be cleaned up: renaming column headers, eliminating 
 
 * Approval data: The main challenge here was converting the date-time columns to a date-24h format and then to have Postgres accept the values of this conversion. In the end, it was decided to perform a second conversion of the date-24h back to string values in order to help Postgres to accept the information.
 
-* Order Lines: In theory, every purchase order number in the order header table should have appeared in the order line table.  However, given that the two tables had been updated manually, and at times by separate employees, there were some purchase orders in the order line data that was missing from order header data. Since part of the project required linking the two tables using the purchase order number as a primary/foreign key, the main challenge was to identify and delete problematic values.  This was accomplished by performing an INNER JOIN in PostGres, with the resulting data saved as a new order line table (preserving the old, unaltered data in the old order line table), and exported back into pandas.
+* Order Lines: In theory, every purchase order number in the order header table should have appeared in the order line table.  However, given that the two tables had been updated manually, and at times by separate employees, there were some purchase orders in the order line data that was missing from order header data. Since part of the project required linking the two tables using the purchase order number as a primary/foreign key, the main challenge was to identify and delete problematic values.  This was accomplished by performing an LEFT JOIN in PostGres, with the resulting data saved as a new order line table (preserving the old, unaltered data in the old order line table), and exported back into pandas.
 
 
 ## Load
