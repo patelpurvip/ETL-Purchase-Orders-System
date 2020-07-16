@@ -20,8 +20,8 @@ The original project (including prior commit history) and the full final product
 2. Create tables in PostgreSQL (run SQL schema file)
 3. Transform, clean, & format data in Pandas. Export final dataframes into PostGres. (5 data frames total, run Step 3 in jupyter notebook)
 4. Create any new dataframes needed for the final database and load into Postgres (Run the joins as stated below and explort the resulting table as a csv.  Load the csv back into Jupyter and run the rest Step 4)
-    * in this case, we needed to create a new version of the order line table, done through performing and inner join in Postgres between the original (old) order line table and the order header table (run the ETL-querys file in PostGres, and )
-    * Finish cleaning this new table in jupyter (run the left join and the rest of the data cleaning in Step 4, then load the new table back into PostGres)
+    * In this case, we needed to create a new version of the order line table, done through performing an inner join in Postgres between the original (old) order line table and the order header table (run the ETL-querys file in PostGres and explort the results as a new csv file)
+    * Load this new table in jupyter and finish data cleaning (run the left join and the rest of the data cleaning in Step 4, then load the new table back into PostGres)
 5. Connect to the local database and load data back into jupyter via SQLAlchemy in order to run queries (run Steps 5 & 6 in jupyter notebook) 
 
 
