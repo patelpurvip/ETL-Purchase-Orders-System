@@ -1,4 +1,4 @@
-# Creation of a procurement database: Requisition and Purchase Order information
+# Creation of a procurement database: Requisition and Purchase Orders
 
 ![ETL-icon2.jfif](Images/ETL-icon2.png)
 
